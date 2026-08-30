@@ -40,7 +40,6 @@ ul {
   margin: 0 0 20px;
 }
 
-
 li {
   display: flex;
   align-items: center;
@@ -79,6 +78,16 @@ li {
   display: inline-block;
 }
 
+/* Keyboard focus and selection visuals */
+.focused {
+  outline: 2px solid #2a9df4;
+  background: rgba(42, 157, 244, 0.06);
+}
+
+.selected {
+  background: rgba(42, 157, 244, 0.12);
+}
+
 .actions {
   display: flex;
   gap: 10px;
@@ -86,4 +95,9 @@ li {
 
 .actions button {
   flex: 1;
+}
+
+/* small button spacing for sort/undo */
+.input-row button#undoBtn {
+  margin-left: 6px;
 }

@@ -35,8 +35,6 @@ input[type="text"] {
 button {
   padding: 10px 12px;
   cursor: pointer;
-  border: 1px solid #ddd;
-  background: #fff;
   border-radius: 6px;
 }
 
@@ -46,14 +44,17 @@ button {
 }
 .sort-row button {
   width: 100%;
-  padding: 8px 12px;
-  height: 36px; /* slightly slimmer */
+  padding: 4px 8px; /* much thinner vertically */
+  height: 28px;
   font-size: 14px;
   border-radius: 6px;
+  border: none;
+  background: transparent; /* never show background */
+  box-shadow: none;
+  opacity: 0.6; /* slightly faded text when inactive */
 }
 .sort-row button[aria-pressed="true"], .sort-row button.active {
-  background: #2a9df4;
-  color: #fff;
+  opacity: 1; /* full opacity when active */
 }
 
 ul {

@@ -12,6 +12,8 @@
   let focusIndex = -1;
   let selectionAnchor = null;
   const selectedIndices = new Set();
+  let sortActive = false;
+  let sortSavedModel = null;
 
   /* Helpers */
   function getItems() {
@@ -316,12 +318,42 @@
       }
     } else if (e.key === "Shift") {
       if (focusIndex >= 0) toggleSelectIndex(focusIndex);
-    } else if (e.key.toLowerCase() === "s") {
-      sortList();
+      } else if (e.key.toLowerCase() === "s") {
+        // toggle sort
+        if (!sortActive) {
+          sortSavedModel = getModel();
+          sortList();
+          sortActive = true;
+          if (sortBtn) {
+            sortBtn.classList.add('active');
+            sortBtn.setAttribute('aria-pressed', 'true');
+          }
+        } else {
+          if (sortSavedModel) renderModel(sortSavedModel);
+          sortSavedModel = null;
+          sortActive = false;
+          if (sortBtn) {
+            sortBtn.classList.remove('active');
+            sortBtn.setAttribute('aria-pressed', 'false');
+          }
+        }
     }
   });
-
-  if (sortBtn) sortBtn.addEventListener("click", sortList);
+    if (sortBtn) sortBtn.addEventListener("click", () => {
+      if (!sortActive) {
+        sortSavedModel = getModel();
+        sortList();
+        sortActive = true;
+        sortBtn.classList.add('active');
+        sortBtn.setAttribute('aria-pressed', 'true');
+      } else {
+        if (sortSavedModel) renderModel(sortSavedModel);
+        sortSavedModel = null;
+        sortActive = false;
+        sortBtn.classList.remove('active');
+        sortBtn.setAttribute('aria-pressed', 'false');
+      }
+    });
   if (undoBtn) undoBtn.addEventListener("click", undo);
 
   deleteBtn.addEventListener("click", () => {

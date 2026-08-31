@@ -18,20 +18,42 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Mobile-first base layout (default = smartphone) */
 .input-row {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 input[type="text"] {
-  flex: 1;
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 10px 12px;
   cursor: pointer;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+}
+
+/* Sort row: below input, narrow height and elongated (full width) */
+.sort-row {
+  margin-bottom: 12px;
+}
+.sort-row button {
+  width: 100%;
+  padding: 8px 12px;
+  height: 36px; /* slightly slimmer */
+  font-size: 14px;
+  border-radius: 6px;
+}
+.sort-row button[aria-pressed="true"], .sort-row button.active {
+  background: #2a9df4;
+  color: #fff;
 }
 
 ul {
@@ -88,16 +110,51 @@ li {
   background: rgba(42, 157, 244, 0.12);
 }
 
-.actions {
-  display: flex;
-  gap: 10px;
+/* Tablet styles */
+@media (min-width: 768px) {
+  .input-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+  }
+
+  .sort-row {
+    margin-bottom: 18px;
+  }
+
+  .actions {
+    flex-wrap: nowrap;
+  }
 }
 
+/* Laptop / Desktop styles */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 800px;
+    padding: 36px;
+  }
+
+  .sort-row button {
+    width: 320px;
+    margin: 0 auto 16px;
+    display: block;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
 .actions button {
   flex: 1;
 }
 
-/* small button spacing for sort/undo */
-.input-row button#undoBtn {
-  margin-left: 6px;
+/* ensure actions are on one line on larger screens, stack on very small if needed */
+.actions {
+  flex-wrap: nowrap;
 }

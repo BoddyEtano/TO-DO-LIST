@@ -1,60 +1,256 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  padding: 30px;
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-.container {
-  max-width: 500px;
+html, body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #b78452;
+  background-image: url("./Images/pizarron corcho textura.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 44px 18px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 0,
+      rgba(255,255,255,0.02) 2px,
+      transparent 2px,
+      transparent 18px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(73,48,29,0.04) 0,
+      rgba(73,48,29,0.04) 2px,
+      transparent 2px,
+      transparent 16px
+    );
+  pointer-events: none;
+}
+
+.board {
+  position: relative;
+  max-width: 860px;
   margin: 0 auto;
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px 12px 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.board::before {
+  display: none;
+}
+
+.pin {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff2b0 0%, #ffd95d 18%, #d9a92d 35%, #a87d1a 75%, #7c5911 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22), inset -2px -2px 3px rgba(0, 0, 0, 0.15);
+  z-index: 0;
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  inset: 5px 5px auto auto;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.pin-1 { top: 18px; left: 10px; }
+.pin-2 { top: 18px; right: 12px; }
+.pin-3 { bottom: 18px; left: 26px; }
+.pin-4 { bottom: 18px; right: 24px; }
+.pin-5 { top: 36%; left: calc(100% - 50px); }
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #f9f3e4 0%, #f0e4c7 100%);
+  border: 10px solid rgba(136, 102, 66, 0.8);
+  border-radius: 18px;
+  box-shadow: 0 18px 28px rgba(41, 25, 14, 0.34), inset 0 0 0 2px rgba(255,255,255,0.42);
+  padding: 42px 24px 18px;
+}
+
+.notebook {
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-0.7deg);
+}
+
+.notebook::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.18), rgba(229, 214, 180, 0.2)),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 26px,
+      rgba(120, 90, 62, 0.14) 26px,
+      rgba(120, 90, 62, 0.14) 27px
+    );
+  pointer-events: none;
+}
+
+.notebook::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(127, 92, 45, 0.35);
+  box-shadow: 12px 0 0 rgba(127, 92, 45, 0.18);
+  opacity: 0.8;
+}
+
+.spiral {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+  background:
+    radial-gradient(circle at 12px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 42px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 72px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 102px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 132px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 162px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 192px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 222px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 252px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 282px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 312px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 342px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 372px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 402px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 432px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 462px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 492px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 522px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 552px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 582px 50%, #ab8a5d 0 8px, transparent 8.6px),
+    radial-gradient(circle at 612px 50%, #ab8a5d 0 8px, transparent 8.6px);
+  background-repeat: repeat-x;
+  opacity: 0.9;
+  z-index: 1;
 }
 
 h1 {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 18px 0 22px;
+  font-size: clamp(3rem, 6vw, 4.4rem);
+  letter-spacing: 0.04em;
+  color: #4e3526;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
+  font-family: "Caveat", "Patrick Hand", "Segoe Print", cursive;
+  font-weight: 700;
 }
 
-/* Mobile-first base layout (default = smartphone) */
+.input-row,
+.sort-row,
+.actions,
+#taskList {
+  position: relative;
+  z-index: 1;
+}
+
 .input-row {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 12px;
 }
 
 input[type="text"] {
-  padding: 10px;
+  padding: 12px 14px;
   width: 100%;
   box-sizing: border-box;
+  border: 2px solid rgba(124, 92, 60, 0.3);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.5);
+  color: #3d2c22;
+  font-size: 1.25rem;
+  box-shadow: inset 0 2px 5px rgba(77, 56, 39, 0.08);
+  font-family: "Caveat", "Patrick Hand", "Segoe Print", cursive;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #8a5d3d;
+  box-shadow: 0 0 0 3px rgba(138, 93, 61, 0.15);
 }
 
 button {
   padding: 10px 12px;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(180deg, #dfb866 0%, #c58f2e 100%);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 0 rgba(120, 83, 24, 0.9);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-/* Sort row: below input, narrow height and elongated (full width) */
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(120, 83, 24, 0.9);
+}
+
 .sort-row {
   margin-bottom: 12px;
 }
+
 .sort-row button {
   width: 100%;
-  padding: 4px 8px; /* much thinner vertically */
-  height: 28px;
+  padding: 5px 10px;
+  height: 30px;
   font-size: 14px;
-  border-radius: 6px;
-  border: none;
-  background: transparent; /* never show background */
-  box-shadow: none;
-  opacity: 0.6; /* slightly faded text when inactive */
+  background: rgba(255, 255, 255, 0.18);
+  color: #664833;
+  box-shadow: inset 0 0 0 1px rgba(95, 70, 49, 0.2);
 }
-.sort-row button[aria-pressed="true"], .sort-row button.active {
-  opacity: 1; /* full opacity when active */
+
+.sort-row button[aria-pressed="true"],
+.sort-row button.active {
+  background: rgba(122, 87, 47, 0.14);
+  color: #433125;
 }
 
 ul {
@@ -67,20 +263,30 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  gap: 12px;
+  padding: 10px 10px;
+  border-bottom: 1px dashed rgba(98, 77, 55, 0.3);
+  background: rgba(255,255,255,0.06);
 }
 
 .task-content {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1;
+}
+
+.task-content span {
+  color: #3f2d25;
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-family: "Caveat", "Patrick Hand", "Segoe Print", cursive;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
 .completed {
   text-decoration: line-through;
-  color: #777;
+  color: #7b6557;
 }
 
 .counter {
@@ -93,25 +299,41 @@ li {
   padding: 4px 8px;
   font-size: 16px;
   line-height: 1;
+  min-width: 28px;
+  background: linear-gradient(180deg, #d8b477 0%, #c7993d 100%);
+  box-shadow: 0 3px 0 rgba(124, 82, 18, 0.8);
 }
 
 .counter .count {
   min-width: 24px;
   text-align: center;
   display: inline-block;
+  color: #4d3327;
+  font-weight: 700;
+  font-family: "Caveat", "Patrick Hand", "Segoe Print", cursive;
+  font-size: 1.5rem;
 }
 
-/* Keyboard focus and selection visuals */
 .focused {
-  outline: 2px solid #2a9df4;
-  background: rgba(42, 157, 244, 0.06);
+  outline: 2px solid rgba(140, 93, 48, 0.7);
+  background: rgba(255, 228, 145, 0.3);
 }
 
 .selected {
-  background: rgba(42, 157, 244, 0.12);
+  background: rgba(141, 105, 62, 0.12);
 }
 
-/* Tablet styles */
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actions button {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
 @media (min-width: 768px) {
   .input-row {
     flex-direction: row;
@@ -123,20 +345,15 @@ li {
     flex: 1;
   }
 
-  .sort-row {
-    margin-bottom: 18px;
-  }
-
   .actions {
     flex-wrap: nowrap;
   }
 }
 
-/* Laptop / Desktop styles */
 @media (min-width: 1024px) {
   .container {
-    max-width: 800px;
-    padding: 36px;
+    max-width: 720px;
+    padding: 46px 30px 22px;
   }
 
   .sort-row button {
@@ -144,18 +361,4 @@ li {
     margin: 0 auto 16px;
     display: block;
   }
-}
-
-.actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-}
-.actions button {
-  flex: 1;
-}
-
-/* ensure actions are on one line on larger screens, stack on very small if needed */
-.actions {
-  flex-wrap: nowrap;
 }
